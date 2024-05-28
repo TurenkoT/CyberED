@@ -19,8 +19,8 @@
         "cells": [
           {
             "position": {
-              "x": 60,
-              "y": 120
+              "x": 50,
+              "y": 200
             },
             "size": {
               "width": 220,
@@ -38,8 +38,8 @@
             },
             "visible": true,
             "shape": "actor",
-            "id": "935c685d-e739-4bfe-9d8d-fa6865872564",
             "zIndex": 1,
+            "id": "935c685d-e739-4bfe-9d8d-fa6865872564",
             "data": {
               "type": "tm.Actor",
               "name": "Пользователь",
@@ -47,9 +47,59 @@
               "outOfScope": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
-              "providesAuthentication": false,
+              "providesAuthentication": true,
               "threats": []
             }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "571ca02b-14d6-4c89-92af-266bcfc6ebbf",
+            "source": {
+              "x": 270,
+              "y": 260
+            },
+            "target": {
+              "cell": "2925c32e-62d6-4f13-9382-df9a1abc8794"
+            },
+            "vertices": [
+              {
+                "x": 340,
+                "y": 320
+              },
+              {
+                "x": 560,
+                "y": 320
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -94,6 +144,19 @@
                   "new": false,
                   "number": 1,
                   "score": "10"
+                },
+                {
+                  "id": "f9a966fb-2c41-4cee-b7fa-8e86891281af",
+                  "title": "XSS",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Поле Description позволяет принять JS конструкции, тем самым позволяя выполнить атаку типа Cross Site Scripting. Однако риск кражи учётных данных минимален, поскольку сессионная cookie httpOnly, её похитить нельзя\nD:8/R:8/E:10/A:10/D:10",
+                  "mitigation": "1. На стороне бэкенда экранировать спецсимволы\n2. Установить WAF",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "9.2"
                 }
               ]
             },
@@ -109,15 +172,19 @@
             },
             "vertices": [
               {
-                "x": 310,
-                "y": 150
+                "x": 350,
+                "y": 170
+              },
+              {
+                "x": 520,
+                "y": 170
               }
             ]
           },
           {
             "position": {
-              "x": 620,
-              "y": 80
+              "x": 570,
+              "y": 180
             },
             "size": {
               "width": 220,
@@ -135,8 +202,8 @@
             },
             "visible": true,
             "shape": "process",
-            "id": "2925c32e-62d6-4f13-9382-df9a1abc8794",
             "zIndex": 11,
+            "id": "2925c32e-62d6-4f13-9382-df9a1abc8794",
             "data": {
               "type": "tm.Process",
               "name": "Перевод средств",
@@ -156,6 +223,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Мочалов Павел,  Айдар Сабиров",
-    "threatTop": 1
+    "threatTop": 2
   }
 }
