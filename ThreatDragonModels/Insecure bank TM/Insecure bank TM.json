@@ -16,11 +16,146 @@
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.2.0",
-        "cells": []
+        "cells": [
+          {
+            "position": {
+              "x": 60,
+              "y": 120
+            },
+            "size": {
+              "width": 220,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Пользователь"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "935c685d-e739-4bfe-9d8d-fa6865872564",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Пользователь",
+              "description": "Авторизованный \nпользователь системы",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Запрос на трансфер",
+              "description": "Метод POST\nАтрибуты:\nfromAccount\ntoAccount\ndescription\namount",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "protocol": "HTTP",
+              "threats": [
+                {
+                  "id": "cabb22d3-292e-4c8d-9588-aed35074fad5",
+                  "title": "Возможность совершения транзакций с произвольного счёта",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "По причине отсутствия проверки на принадлежность счёта авторизованному пользователю, появляется возможность подделки запроса на перевод, изменяя параметр fromAccount на произвольный, можно добиться списания средств с чужого счета \nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "На бэкенде реализовать проверку принадлежности счёта авторизованному пользователю и запретить производить перевод, если счёт не принадлежит пользователю.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "10"
+                }
+              ]
+            },
+            "id": "6c7bcf2b-8e99-4a92-a53d-df93e5e17293",
+            "labels": [
+              "Запрос на трансфер"
+            ],
+            "source": {
+              "cell": "935c685d-e739-4bfe-9d8d-fa6865872564"
+            },
+            "target": {
+              "cell": "2925c32e-62d6-4f13-9382-df9a1abc8794"
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 150
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": 620,
+              "y": 80
+            },
+            "size": {
+              "width": 220,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "Перевод средств"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "2925c32e-62d6-4f13-9382-df9a1abc8794",
+            "zIndex": 11,
+            "data": {
+              "type": "tm.Process",
+              "name": "Перевод средств",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": true,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "",
+              "threats": []
+            }
+          }
+        ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "Мочалов Павел,  Айдар Сабиров",
-    "threatTop": 0
+    "threatTop": 1
   }
 }
