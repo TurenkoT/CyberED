@@ -191,6 +191,19 @@
                   "new": false,
                   "number": 4,
                   "score": "9"
+                },
+                {
+                  "id": "069f9284-640e-438e-bd9a-27294cafea7a",
+                  "title": "Отрицательное значение суммы перевода",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Поле Amount позволяет ввести отрицательное значение суммы перевода, что может повлиять на алгоритм списания и начисления средств\nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "Ограничить на стороне бэкенда ввод отрицательных значений в поле Amount",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "10"
                 }
               ]
             }
@@ -200,6 +213,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Мочалов Павел,  Айдар Сабиров",
-    "threatTop": 4
+    "threatTop": 5
   }
 }
