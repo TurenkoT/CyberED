@@ -55,56 +55,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "571ca02b-14d6-4c89-92af-266bcfc6ebbf",
-            "source": {
-              "x": 270,
-              "y": 260
-            },
-            "target": {
-              "cell": "2925c32e-62d6-4f13-9382-df9a1abc8794"
-            },
-            "vertices": [
-              {
-                "x": 340,
-                "y": 320
-              },
-              {
-                "x": 560,
-                "y": 320
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "red",
                 "strokeWidth": 2.5,
                 "targetMarker": {
@@ -195,8 +145,8 @@
                 "text": "Перевод средств"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -207,15 +157,29 @@
             "data": {
               "type": "tm.Process",
               "name": "Перевод средств",
-              "description": "",
+              "description": "Процесс перевода средств от клиента к другому клиенту",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": true,
               "handlesGoodsOrServices": false,
               "isWebApplication": true,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "787d4894-6394-4631-8fab-bba480c8ae7c",
+                  "title": "Слабый алгоритм подтверждения перевода",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Для подтверждения перевода для всех пользователей установлен один и тот же код подтверждения, состоящий из 3х цифр (243). \nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "Разработать новый алгоритм подтверждения запроса на перевод - 2fa с SMS или push на телефон\nИспользовать captcha",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "10"
+                }
+              ]
             }
           }
         ]
@@ -223,6 +187,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Мочалов Павел,  Айдар Сабиров",
-    "threatTop": 2
+    "threatTop": 3
   }
 }
