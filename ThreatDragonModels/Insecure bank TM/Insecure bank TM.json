@@ -1,0 +1,16 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "Insecure bank TM",
+    "owner": "Туренко Тимофей",
+    "description": "Web-приложение интернет банка",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "Мочалов Павел,  Айдар Сабиров",
+    "threatTop": 0
+  }
+}
