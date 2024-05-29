@@ -196,9 +196,9 @@
                   "id": "069f9284-640e-438e-bd9a-27294cafea7a",
                   "title": "Отрицательное значение суммы перевода",
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "type": "Tampering",
-                  "description": "Поле Amount позволяет ввести отрицательное значение суммы перевода, что может повлиять на алгоритм списания и начисления средств\nD:10/R:10/E:10/A:10/D:10",
+                  "description": "Поле Amount позволяет ввести отрицательное значение суммы перевода, что влияет на алгоритм списания и начисления средств. Таким образом можно пополнить себе счёт, указав отрицательное значение\nD:10/R:10/E:10/A:10/D:10",
                   "mitigation": "Ограничить на стороне бэкенда ввод отрицательных значений в поле Amount",
                   "modelType": "STRIDE",
                   "new": false,
@@ -207,12 +207,89 @@
                 }
               ]
             }
+          },
+          {
+            "position": {
+              "x": 570,
+              "y": 330
+            },
+            "size": {
+              "width": 220,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "Загрузка аватара"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "2716b832-73bc-422e-9c89-a47e31571aeb",
+            "data": {
+              "type": "tm.Process",
+              "name": "Загрузка аватара",
+              "description": "Процесс загрузки файла аватара в профиль пользователя",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "787d4894-6394-4631-8fab-bba480c8ae7c",
+                  "title": "Слабый алгоритм подтверждения перевода",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Для подтверждения перевода для всех пользователей установлен один и тот же код подтверждения, состоящий из 3х цифр (243). \nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "Разработать новый алгоритм подтверждения запроса на перевод - 2fa с SMS или push на телефон\nИспользовать captcha",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "10"
+                },
+                {
+                  "id": "d55dfb58-9e50-48f1-a6eb-931a5f64fd59",
+                  "title": "Раскрытие информации о стеке и типах данных",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "При отправке запроса на перевод со строковым значением в поле Amount выдаётся ошибка:\nFailed to convert property value of type java.lang.String to required type double for property amount; nested exception is java.lang.NumberFormatException: For input string: \"строка\"\nИз которой можно сделать вывод о том, что приложение написано на Java и тип поля Amount должен быть double.\nD:5/R:10/E:10/A:10/D:10\n",
+                  "mitigation": "Подавить вывод ошибки",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "9"
+                },
+                {
+                  "id": "069f9284-640e-438e-bd9a-27294cafea7a",
+                  "title": "Отрицательное значение суммы перевода",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Поле Amount позволяет ввести отрицательное значение суммы перевода, что влияет на алгоритм списания и начисления средств. Таким образом можно пополнить себе счёт, указав отрицательное значение\nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "Ограничить на стороне бэкенда ввод отрицательных значений в поле Amount",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "10"
+                }
+              ]
+            },
+            "zIndex": 12
           }
         ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "Мочалов Павел,  Айдар Сабиров",
-    "threatTop": 5
+    "threatTop": 6
   }
 }
