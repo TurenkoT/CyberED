@@ -32,8 +32,8 @@
                 "text": "Web сервер"
               }
             },
-            "id": "b88d6431-1fa8-420b-9b7e-2061c6e610fc",
             "zIndex": -1,
+            "id": "b88d6431-1fa8-420b-9b7e-2061c6e610fc",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Web сервер",
@@ -188,6 +188,9 @@
               "threats": []
             },
             "id": "081b0259-7a19-4954-ae9d-aeba1f5736cc",
+            "labels": [
+              "Запрос на смену аватара"
+            ],
             "source": {
               "x": 270,
               "y": 260
@@ -200,9 +203,6 @@
                 "x": 510,
                 "y": 260
               }
-            ],
-            "labels": [
-              "Запрос на смену аватара"
             ]
           },
           {
@@ -237,6 +237,9 @@
               "threats": []
             },
             "id": "d05a5d68-ef57-457e-a50a-ffe5a73d15a9",
+            "labels": [
+              "Запрос на просмотр профиля пользователя"
+            ],
             "source": {
               "x": 270,
               "y": 260
@@ -244,10 +247,7 @@
             "target": {
               "cell": "452df0fb-bb3e-40fc-b8ef-8a79cfa05099"
             },
-            "vertices": [],
-            "labels": [
-              "Запрос на просмотр профиля пользователя"
-            ]
+            "vertices": []
           },
           {
             "position": {
@@ -347,6 +347,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 12,
             "id": "2716b832-73bc-422e-9c89-a47e31571aeb",
             "data": {
               "type": "tm.Process",
@@ -387,8 +388,7 @@
                   "score": "10"
                 }
               ]
-            },
-            "zIndex": 12
+            }
           },
           {
             "position": {
@@ -411,6 +411,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 13,
             "id": "452df0fb-bb3e-40fc-b8ef-8a79cfa05099",
             "data": {
               "type": "tm.Process",
@@ -438,8 +439,7 @@
                   "score": "10"
                 }
               ]
-            },
-            "zIndex": 13
+            }
           }
         ]
       }
