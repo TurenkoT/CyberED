@@ -19,6 +19,31 @@
         "cells": [
           {
             "position": {
+              "x": 409.9999999999982,
+              "y": 100.00000000000227
+            },
+            "size": {
+              "width": 530,
+              "height": 530
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Web сервер"
+              }
+            },
+            "id": "b88d6431-1fa8-420b-9b7e-2061c6e610fc",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Web сервер",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
               "x": 50,
               "y": 200
             },
@@ -129,6 +154,99 @@
                 "x": 520,
                 "y": 170
               }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Запрос на смену аватара",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "081b0259-7a19-4954-ae9d-aeba1f5736cc",
+            "source": {
+              "x": 270,
+              "y": 260
+            },
+            "target": {
+              "cell": "2716b832-73bc-422e-9c89-a47e31571aeb"
+            },
+            "vertices": [
+              {
+                "x": 510,
+                "y": 260
+              }
+            ],
+            "labels": [
+              "Запрос на смену аватара"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Запрос на просмотр профиля пользователя",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "HTTP",
+              "threats": []
+            },
+            "id": "d05a5d68-ef57-457e-a50a-ffe5a73d15a9",
+            "source": {
+              "x": 270,
+              "y": 260
+            },
+            "target": {
+              "cell": "452df0fb-bb3e-40fc-b8ef-8a79cfa05099"
+            },
+            "vertices": [],
+            "labels": [
+              "Запрос на просмотр профиля пользователя"
             ]
           },
           {
@@ -243,53 +361,91 @@
               "privilegeLevel": "",
               "threats": [
                 {
-                  "id": "787d4894-6394-4631-8fab-bba480c8ae7c",
-                  "title": "Слабый алгоритм подтверждения перевода",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Spoofing",
-                  "description": "Для подтверждения перевода для всех пользователей установлен один и тот же код подтверждения, состоящий из 3х цифр (243). \nD:10/R:10/E:10/A:10/D:10",
-                  "mitigation": "Разработать новый алгоритм подтверждения запроса на перевод - 2fa с SMS или push на телефон\nИспользовать captcha",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 3,
-                  "score": "10"
-                },
-                {
                   "id": "d55dfb58-9e50-48f1-a6eb-931a5f64fd59",
                   "title": "Раскрытие информации о стеке и типах данных",
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Information disclosure",
-                  "description": "При отправке запроса на перевод со строковым значением в поле Amount выдаётся ошибка:\nFailed to convert property value of type java.lang.String to required type double for property amount; nested exception is java.lang.NumberFormatException: For input string: \"строка\"\nИз которой можно сделать вывод о том, что приложение написано на Java и тип поля Amount должен быть double.\nD:5/R:10/E:10/A:10/D:10\n",
-                  "mitigation": "Подавить вывод ошибки",
+                  "description": "При загрузке файла с аватаром размера > 0.47Мб выдаётся ошибка(stack trace java):\n...  Maximum upload size of 500000 bytes exceeded ...\nТак же из ошибки можно определить, что Web-приложение работает под управлением Apache Tomcat версии 9.0.29, которая содержит ряд уязвимостей, в том числе класса RCE\nD:5/R:10/E:10/A:10/D:10\n",
+                  "mitigation": "Подавить вывод ошибки.\nОбновить версию Tomcat до последней",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 4,
                   "score": "9"
                 },
                 {
-                  "id": "069f9284-640e-438e-bd9a-27294cafea7a",
-                  "title": "Отрицательное значение суммы перевода",
+                  "id": "c576845e-0e40-464a-a813-bf5c3dd074c0",
+                  "title": "Возможность загрузки любого файла",
                   "status": "Open",
                   "severity": "High",
                   "type": "Tampering",
-                  "description": "Поле Amount позволяет ввести отрицательное значение суммы перевода, что влияет на алгоритм списания и начисления средств. Таким образом можно пополнить себе счёт, указав отрицательное значение\nD:10/R:10/E:10/A:10/D:10",
-                  "mitigation": "Ограничить на стороне бэкенда ввод отрицательных значений в поле Amount",
+                  "description": "Любой файл можно загрузить, поменяв ему расширение (к примеру на .jpg). Далее к этому файлу можно обращаться по пути /insecure-bank/dashboard/userDetail/avatar?image={ИМЯ_ПОЛЬЗОВАТЕЛЯ}.png\nТаким образом можно загрузить shell и использовать его для RCE\nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "Проверять магические байты файлов на соответствие разрешённым форматам\nУстановка WAF",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 5,
+                  "number": 7,
                   "score": "10"
                 }
               ]
             },
             "zIndex": 12
+          },
+          {
+            "position": {
+              "x": 570,
+              "y": 480
+            },
+            "size": {
+              "width": 220,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "Профиль пользователя"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "452df0fb-bb3e-40fc-b8ef-8a79cfa05099",
+            "data": {
+              "type": "tm.Process",
+              "name": "Профиль пользователя",
+              "description": "Процесс отображение странички профиля пользователя",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "33086622-365f-49ff-839e-8587244e39f9",
+                  "title": "IDOR просмотр/редактирование профиля любого пользователя",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Будучи авторизованным пользователем1 имеется возможность зайти в профиль другого пользователя2. Для этого зная имя пользователя достаточно в браузере указать URI /insecure-bank/dashboard/userDetail?username={ИМЯ ПОЛЬЗОВАТЕЛЯ 2}\nD:10/R:10/E:10/A:10/D:10",
+                  "mitigation": "Пересмотреть процесс авторизации, в частности проверять токен выданный пользователю при посещении страницы профиля пользователя",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "10"
+                }
+              ]
+            },
+            "zIndex": 13
           }
         ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "Мочалов Павел,  Айдар Сабиров",
-    "threatTop": 6
+    "threatTop": 8
   }
 }
