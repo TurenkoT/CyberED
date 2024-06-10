@@ -16,11 +16,225 @@
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.2.0",
-        "cells": []
+        "cells": [
+          {
+            "position": {
+              "x": 490,
+              "y": 110
+            },
+            "size": {
+              "width": 200,
+              "height": 160
+            },
+            "attrs": {
+              "text": {
+                "text": "Авторизация в приложении"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "c0da26e7-6463-48d0-9289-da4418033548",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Process",
+              "name": "Авторизация в приложении",
+              "description": "Аутентификаци и авторизация в приложении ",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "19446496-49f8-44f3-8fc4-39eeab44cf2e",
+                  "title": "Отказ сервера от обслуживания",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Любой пользователь, в том числе и анонимный имеет доступ в веб интерфейс.\nДанная угроза несёт серъезный характер, т.к. любой прользователь осуществить отказ от обслуживания, нагрузив сервер задачами обработки данных больших объемов\nD:10/R10:/E:10/A:10/D:10",
+                  "mitigation": "Настроить ролевую модель и авторизацию",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "10"
+                },
+                {
+                  "id": "7bbcbf83-d863-45db-a843-0138b9b7ae68",
+                  "title": "Утечка конфиденциальных данных",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Утечка данных логов джоб, конфигурации сервера и др. данных\nD:10/R:10/E:10/A:10/D:10/",
+                  "mitigation": "Реализовать ролевую модель и аутентификацию",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "10"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 30,
+              "y": 130
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Любой пользователь"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "31b2aed6-cceb-4eca-815a-e27d045d4833",
+            "zIndex": 2,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Любой пользователь",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Запрос на доступ в интерфейс",
+              "description": "Запрос к интерфейсу",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "http",
+              "threats": [
+                {
+                  "id": "656e99db-4482-416e-9a1b-a373b5fc61d5",
+                  "title": "Перехват трафика",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Трафик передается без шифрования TLS, соответственно есть возможность злоумышленнике \"встать по середине\" и слушать или вмешиваться в трафик. Что может привести к компрометации учетных данных либо нарушению целостности данных \nD:10/R:10/E:7/A:10/D:10",
+                  "mitigation": "Уствновить защищенное TLS соединение",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "9,4"
+                }
+              ]
+            },
+            "id": "31a29f56-efe9-4b3c-a668-205f0063c7ea",
+            "labels": [
+              "Запрос на доступ в интерфейс"
+            ],
+            "source": {
+              "x": 140,
+              "y": 160
+            },
+            "target": {
+              "cell": "c0da26e7-6463-48d0-9289-da4418033548"
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 198
+              }
+            ]
+          },
+          {
+            "position": {
+              "x": 445,
+              "y": 289.0000000000001
+            },
+            "size": {
+              "width": 290,
+              "height": 160
+            },
+            "attrs": {
+              "text": {
+                "text": "Загрузка файлов для Job"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "4c2c027e-9249-400f-9747-3b1c622c32f6",
+            "zIndex": 11,
+            "data": {
+              "type": "tm.Process",
+              "name": "Загрузка файлов для Job",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "c5be7d5d-d0e7-4c4a-9cf2-2d4a12a5406a",
+                  "title": "Удалённое исполнение кода",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Возможность загрузки файлов любого расширения может привести к загрузке пэйлоуда, который отработает на удалённом сервере.\n\nD:10/R:10/E:2/A:10/D:10",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "8,4"
+                }
+              ]
+            }
+          }
+        ]
       }
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 4
   }
 }
