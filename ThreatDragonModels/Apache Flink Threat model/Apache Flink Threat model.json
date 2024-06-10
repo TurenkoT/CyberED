@@ -119,70 +119,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Запрос на доступ в интерфейс",
-              "description": "Запрос к интерфейсу",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "http",
-              "threats": [
-                {
-                  "id": "656e99db-4482-416e-9a1b-a373b5fc61d5",
-                  "title": "Перехват трафика",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "Трафик передается без шифрования TLS, соответственно есть возможность злоумышленнике \"встать по середине\" и слушать или вмешиваться в трафик. Что может привести к компрометации учетных данных либо нарушению целостности данных \nD:10/R:10/E:7/A:10/D:10",
-                  "mitigation": "Уствновить защищенное TLS соединение",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 1,
-                  "score": "9,4"
-                }
-              ]
-            },
-            "id": "31a29f56-efe9-4b3c-a668-205f0063c7ea",
-            "labels": [
-              "Запрос на доступ в интерфейс"
-            ],
-            "source": {
-              "x": 140,
-              "y": 160
-            },
-            "target": {
-              "cell": "c0da26e7-6463-48d0-9289-da4418033548"
-            },
-            "vertices": [
-              {
-                "x": 310,
-                "y": 198
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "#333333",
                 "targetMarker": {
                   "name": "block"
@@ -270,6 +206,110 @@
             ]
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "d7479c2a-355c-4065-a595-be897cbbd264",
+            "source": {
+              "x": 26,
+              "y": 160
+            },
+            "target": {
+              "cell": "8c0889ba-e7fb-4290-823f-b0a421651fb4"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Запрос на доступ в интерфейс",
+              "description": "Запрос к интерфейсу",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "http",
+              "threats": [
+                {
+                  "id": "656e99db-4482-416e-9a1b-a373b5fc61d5",
+                  "title": "Перехват трафика",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Трафик передается без шифрования TLS, соответственно есть возможность злоумышленнике \"встать по середине\" и слушать или вмешиваться в трафик. Что может привести к компрометации учетных данных либо нарушению целостности данных \nD:10/R:10/E:7/A:10/D:10",
+                  "mitigation": "Уствновить защищенное TLS соединение",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "9,4"
+                }
+              ]
+            },
+            "id": "31a29f56-efe9-4b3c-a668-205f0063c7ea",
+            "labels": [
+              "Запрос на доступ в интерфейс"
+            ],
+            "source": {
+              "x": 140,
+              "y": 160
+            },
+            "target": {
+              "cell": "c0da26e7-6463-48d0-9289-da4418033548"
+            },
+            "vertices": [
+              {
+                "x": 310,
+                "y": 198
+              }
+            ]
+          },
+          {
             "position": {
               "x": 445,
               "y": 289.0000000000001
@@ -310,12 +350,25 @@
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Tampering",
-                  "description": "Возможность загрузки файлов любого расширения может привести к загрузке пэйлоуда, который отработает на удалённом сервере.\n\nD:10/R:10/E:2/A:10/D:10",
+                  "description": "Возможность загрузки файлов любого содержимого может привести к загрузке пэйлоуда, который отработает на удалённом сервере.\n\nD:10/R:10/E:2/A:10/D:10",
                   "mitigation": "Provide remediation for this threat or a reason if status is N/A",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 4,
                   "score": "8,4"
+                },
+                {
+                  "id": "2ac65a23-c442-41b3-b54c-8f19d0b979a3",
+                  "title": "Раскрытие информации в ошибке",
+                  "status": "Open",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "При загрузке файлов в job расширения не jar выдаётся стек трейс Java. \nДанный вывод возможно поможет злоумышленнику спланировать атаку\nD:0/R:5/E:10/A:7/D:10",
+                  "mitigation": "Подавить вывод ошибок в необработанном виде",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": "6,4"
                 }
               ]
             }
@@ -478,6 +531,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 5
+    "threatTop": 6
   }
 }
