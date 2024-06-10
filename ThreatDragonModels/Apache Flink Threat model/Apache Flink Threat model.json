@@ -38,8 +38,8 @@
             },
             "visible": true,
             "shape": "process",
-            "id": "c0da26e7-6463-48d0-9289-da4418033548",
             "zIndex": 1,
+            "id": "c0da26e7-6463-48d0-9289-da4418033548",
             "data": {
               "type": "tm.Process",
               "name": "Авторизация в приложении",
@@ -102,8 +102,8 @@
             },
             "visible": true,
             "shape": "actor",
-            "id": "31b2aed6-cceb-4eca-815a-e27d045d4833",
             "zIndex": 2,
+            "id": "31b2aed6-cceb-4eca-815a-e27d045d4833",
             "data": {
               "type": "tm.Actor",
               "name": "Любой пользователь",
@@ -180,6 +180,96 @@
             ]
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "c2b2e527-d812-4a2a-b3e7-eed9c1c9e4c6",
+            "source": {
+              "cell": "31b2aed6-cceb-4eca-815a-e27d045d4833"
+            },
+            "target": {
+              "cell": "4c2c027e-9249-400f-9747-3b1c622c32f6"
+            },
+            "vertices": [
+              {
+                "x": 320,
+                "y": 260
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "c282d6c1-a0ee-42e8-bc61-3211a68e34bf",
+            "source": {
+              "cell": "31b2aed6-cceb-4eca-815a-e27d045d4833"
+            },
+            "target": {
+              "cell": "0b3268d3-e793-4381-a29b-f3cc5ed1dfdb"
+            },
+            "vertices": [
+              {
+                "x": 210,
+                "y": 240
+              }
+            ]
+          },
+          {
             "position": {
               "x": 445,
               "y": 289.0000000000001
@@ -200,8 +290,8 @@
             },
             "visible": true,
             "shape": "process",
-            "id": "4c2c027e-9249-400f-9747-3b1c622c32f6",
             "zIndex": 11,
+            "id": "4c2c027e-9249-400f-9747-3b1c622c32f6",
             "data": {
               "type": "tm.Process",
               "name": "Загрузка файлов для Job",
@@ -229,12 +319,114 @@
                 }
               ]
             }
+          },
+          {
+            "position": {
+              "x": 445,
+              "y": 480
+            },
+            "size": {
+              "width": 310,
+              "height": 150
+            },
+            "attrs": {
+              "text": {
+                "text": "Job manager"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "0b3268d3-e793-4381-a29b-f3cc5ed1dfdb",
+            "zIndex": 12,
+            "data": {
+              "type": "tm.Process",
+              "name": "Job manager",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "d700559f-c945-45e9-8a00-3282bc90fa61",
+                  "title": "Утечка внутренних данных о сервере ",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Вкладка Job manager содержит избыточное количество данных о сервере, логах и JVM, что облегчает работу хакерам, к примеру зная где лежит дамп JVM можно попытаться сего скачать и поискать в нем пароли от сервисов\nD:10/R:10/E:2/A:10/D:10",
+                  "mitigation": "Открывать данный раздел только администраторам системы\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "10"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 445,
+              "y": 660
+            },
+            "size": {
+              "width": 310,
+              "height": 150
+            },
+            "attrs": {
+              "text": {
+                "text": "Tas manager"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "abbed252-0bfa-4d0b-93a5-5ce93ea83392",
+            "data": {
+              "type": "tm.Process",
+              "name": "Tas manager",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "d700559f-c945-45e9-8a00-3282bc90fa61",
+                  "title": "Утечка внутренних данных о сервере ",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Вкладка Job manager содержит избыточное количество данных о сервере, логах и JVM, что облегчает работу хакерам, к примеру зная где лежит дамп JVM можно попытаться сего скачать и поискать в нем пароли от сервисов\nD:10/R:10/E:2/A:10/D:10",
+                  "mitigation": "Открывать данный раздел только администраторам системы\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "10"
+                }
+              ]
+            },
+            "zIndex": 13
           }
         ]
       }
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 4
+    "threatTop": 5
   }
 }
