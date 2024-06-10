@@ -322,8 +322,8 @@
           },
           {
             "position": {
-              "x": 445,
-              "y": 480
+              "x": 490,
+              "y": 470
             },
             "size": {
               "width": 310,
@@ -341,8 +341,8 @@
             },
             "visible": true,
             "shape": "process",
-            "id": "0b3268d3-e793-4381-a29b-f3cc5ed1dfdb",
             "zIndex": 12,
+            "id": "0b3268d3-e793-4381-a29b-f3cc5ed1dfdb",
             "data": {
               "type": "tm.Process",
               "name": "Job manager",
@@ -392,6 +392,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 13,
             "id": "abbed252-0bfa-4d0b-93a5-5ce93ea83392",
             "data": {
               "type": "tm.Process",
@@ -419,8 +420,58 @@
                   "score": "10"
                 }
               ]
+            }
+          },
+          {
+            "position": {
+              "x": 142.5,
+              "y": 470
             },
-            "zIndex": 13
+            "size": {
+              "width": 310,
+              "height": 150
+            },
+            "attrs": {
+              "text": {
+                "text": "Task manager"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "8c0889ba-e7fb-4290-823f-b0a421651fb4",
+            "data": {
+              "type": "tm.Process",
+              "name": "Task manager",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "d700559f-c945-45e9-8a00-3282bc90fa61",
+                  "title": "Утечка внутренних данных о сервере ",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Вкладка Task manager содержит избыточное количество данных о сервере, логах и JVM, что облегчает работу хакерам, к примеру зная где лежит дамп JVM можно попытаться сего скачать и поискать в нем пароли от сервисов\nD:10/R:10/E:2/A:10/D:10",
+                  "mitigation": "Открывать данный раздел только администраторам системы\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "10"
+                }
+              ]
+            },
+            "zIndex": 14
           }
         ]
       }
