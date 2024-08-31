@@ -19,8 +19,8 @@
         "cells": [
           {
             "position": {
-              "x": 490,
-              "y": 110
+              "x": 510,
+              "y": 180
             },
             "size": {
               "width": 200,
@@ -54,12 +54,12 @@
               "threats": [
                 {
                   "id": "19446496-49f8-44f3-8fc4-39eeab44cf2e",
-                  "title": "Отказ сервера от обслуживания",
+                  "title": "Слабая защита авторизации",
                   "status": "Open",
                   "severity": "High",
-                  "type": "Denial of service",
-                  "description": "Любой пользователь, в том числе и анонимный имеет доступ в веб интерфейс.\nДанная угроза несёт серъезный характер, т.к. любой прользователь осуществить отказ от обслуживания, нагрузив сервер задачами обработки данных больших объемов\nD:10/R10:/E:10/A:10/D:10",
-                  "mitigation": "Настроить ролевую модель и авторизацию",
+                  "type": "Elevation of privilege",
+                  "description": "В качестве аутентификации используется только email, без пароля. Существует риск завладения аккаунтом пользователя, если его email будет скомпрометирован\nD:9/R10:/E:10/A:10/D:10",
+                  "mitigation": "Настроить ролевую модель и авторизацию через пароль. Плюс парольная политика от 12 символов буквы цифры кириллицы и спецсимволы обязательны",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 2,
@@ -71,14 +71,22 @@
                   "status": "Open",
                   "severity": "High",
                   "type": "Information disclosure",
-                  "description": "Утечка данных логов джоб, конфигурации сервера и др. данных\nD:10/R:10/E:10/A:10/D:10/",
-                  "mitigation": "Реализовать ролевую модель и аутентификацию",
+                  "description": "Нет защиты от атак перебора, таким образом можно перебрать email пользователей, зарегистрированных на платформе\nD:10/R:10/E:10/A:10/D:10/",
+                  "mitigation": "Реализовать защиту от перебора на уровне вебсервера или с помощью накладных средств защиты",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
                   "score": "10"
                 }
-              ]
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 2
+              }
             }
           },
           {
@@ -119,136 +127,6 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "c2b2e527-d812-4a2a-b3e7-eed9c1c9e4c6",
-            "source": {
-              "cell": "31b2aed6-cceb-4eca-815a-e27d045d4833"
-            },
-            "target": {
-              "cell": "4c2c027e-9249-400f-9747-3b1c622c32f6"
-            },
-            "vertices": [
-              {
-                "x": 320,
-                "y": 260
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "c282d6c1-a0ee-42e8-bc61-3211a68e34bf",
-            "source": {
-              "cell": "31b2aed6-cceb-4eca-815a-e27d045d4833"
-            },
-            "target": {
-              "cell": "0b3268d3-e793-4381-a29b-f3cc5ed1dfdb"
-            },
-            "vertices": [
-              {
-                "x": 210,
-                "y": 240
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Data Flow",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "d7479c2a-355c-4065-a595-be897cbbd264",
-            "source": {
-              "x": 26,
-              "y": 160
-            },
-            "target": {
-              "cell": "8c0889ba-e7fb-4290-823f-b0a421651fb4"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
                 "stroke": "red",
                 "strokeWidth": 2.5,
                 "targetMarker": {
@@ -266,7 +144,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Запрос на доступ в интерфейс",
+              "name": "Запрос на создание конференции",
               "description": "Запрос к интерфейсу",
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -293,7 +171,7 @@
             },
             "id": "31a29f56-efe9-4b3c-a668-205f0063c7ea",
             "labels": [
-              "Запрос на доступ в интерфейс"
+              "Запрос на создание конференции"
             ],
             "source": {
               "x": 140,
@@ -308,121 +186,6 @@
                 "y": 198
               }
             ]
-          },
-          {
-            "position": {
-              "x": 445,
-              "y": 289.0000000000001
-            },
-            "size": {
-              "width": 290,
-              "height": 160
-            },
-            "attrs": {
-              "text": {
-                "text": "Загрузка файлов для Job"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 11,
-            "id": "4c2c027e-9249-400f-9747-3b1c622c32f6",
-            "data": {
-              "type": "tm.Process",
-              "name": "Загрузка файлов для Job",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "c5be7d5d-d0e7-4c4a-9cf2-2d4a12a5406a",
-                  "title": "Удалённое исполнение кода",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "Возможность загрузки файлов любого содержимого может привести к загрузке пэйлоуда, который отработает на удалённом сервере.\n\nD:10/R:10/E:2/A:10/D:10",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 4,
-                  "score": "8,4"
-                },
-                {
-                  "id": "2ac65a23-c442-41b3-b54c-8f19d0b979a3",
-                  "title": "Раскрытие информации в ошибке",
-                  "status": "Open",
-                  "severity": "Low",
-                  "type": "Information disclosure",
-                  "description": "При загрузке файлов в job расширения не jar выдаётся стек трейс Java. \nДанный вывод возможно поможет злоумышленнику спланировать атаку\nD:0/R:5/E:10/A:7/D:10",
-                  "mitigation": "Подавить вывод ошибок в необработанном виде",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 6,
-                  "score": "6,4"
-                }
-              ]
-            }
-          },
-          {
-            "position": {
-              "x": 490,
-              "y": 470
-            },
-            "size": {
-              "width": 310,
-              "height": 150
-            },
-            "attrs": {
-              "text": {
-                "text": "Job manager"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 12,
-            "id": "0b3268d3-e793-4381-a29b-f3cc5ed1dfdb",
-            "data": {
-              "type": "tm.Process",
-              "name": "Job manager",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "d700559f-c945-45e9-8a00-3282bc90fa61",
-                  "title": "Утечка внутренних данных о сервере ",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Information disclosure",
-                  "description": "Вкладка Job manager содержит избыточное количество данных о сервере, логах и JVM, что облегчает работу хакерам, к примеру зная где лежит дамп JVM можно попытаться сего скачать и поискать в нем пароли от сервисов\nD:10/R:10/E:2/A:10/D:10",
-                  "mitigation": "Открывать данный раздел только администраторам системы\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 5,
-                  "score": "10"
-                }
-              ]
-            }
           },
           {
             "position": {
@@ -474,62 +237,11 @@
                 }
               ]
             }
-          },
-          {
-            "position": {
-              "x": 142.5,
-              "y": 470
-            },
-            "size": {
-              "width": 310,
-              "height": 150
-            },
-            "attrs": {
-              "text": {
-                "text": "Task manager"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "id": "8c0889ba-e7fb-4290-823f-b0a421651fb4",
-            "data": {
-              "type": "tm.Process",
-              "name": "Task manager",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "d700559f-c945-45e9-8a00-3282bc90fa61",
-                  "title": "Утечка внутренних данных о сервере ",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Information disclosure",
-                  "description": "Вкладка Task manager содержит избыточное количество данных о сервере, логах и JVM, что облегчает работу хакерам, к примеру зная где лежит дамп JVM можно попытаться сего скачать и поискать в нем пароли от сервисов\nD:10/R:10/E:2/A:10/D:10",
-                  "mitigation": "Открывать данный раздел только администраторам системы\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 5,
-                  "score": "10"
-                }
-              ]
-            },
-            "zIndex": 14
           }
         ]
       }
     ],
-    "diagramTop": 2,
+    "diagramTop": 3,
     "reviewer": "",
     "threatTop": 6
   }
