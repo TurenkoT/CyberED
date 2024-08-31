@@ -186,57 +186,6 @@
                 "y": 198
               }
             ]
-          },
-          {
-            "position": {
-              "x": 445,
-              "y": 660
-            },
-            "size": {
-              "width": 310,
-              "height": 150
-            },
-            "attrs": {
-              "text": {
-                "text": "Tas manager"
-              },
-              "body": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 13,
-            "id": "abbed252-0bfa-4d0b-93a5-5ce93ea83392",
-            "data": {
-              "type": "tm.Process",
-              "name": "Tas manager",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": [
-                {
-                  "id": "d700559f-c945-45e9-8a00-3282bc90fa61",
-                  "title": "Утечка внутренних данных о сервере ",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Information disclosure",
-                  "description": "Вкладка Job manager содержит избыточное количество данных о сервере, логах и JVM, что облегчает работу хакерам, к примеру зная где лежит дамп JVM можно попытаться сего скачать и поискать в нем пароли от сервисов\nD:10/R:10/E:2/A:10/D:10",
-                  "mitigation": "Открывать данный раздел только администраторам системы\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 5,
-                  "score": "10"
-                }
-              ]
-            }
           }
         ]
       }
